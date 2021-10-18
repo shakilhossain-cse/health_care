@@ -88,7 +88,7 @@ const Footer = () => {
             </Col>
           </Row>
         </div>
-        <div className="py-5">
+        <div className="py-3">
           <p>
             © 2019 <span className="fw-bold text-black">MedService</span>. All
             Rights Reserved
