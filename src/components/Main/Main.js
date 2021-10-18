@@ -1,9 +1,14 @@
 import React from 'react'
+import Banner from '../Banner/Banner'
+import Cares from '../Cares/Cares'
+import Services from '../Services/Services'
 
 const Main = () => {
     return (
-        <div className="p-4 bg-danger text-center">
-            hello Assignment
+        <div className="">
+            <Banner />
+            <Cares />
+            <Services/>
         </div>
     )
 }
