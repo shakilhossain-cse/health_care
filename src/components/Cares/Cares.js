@@ -5,7 +5,7 @@ import WorkTime from "../WorkTime/WorkTime";
 
 const Cares = () => {
   return (
-    <div className="py-5" id="service">
+    <div className="py-5" id="cares">
       <Container>
         <Row xs={1} md={3} className="g-4">
           <Care
