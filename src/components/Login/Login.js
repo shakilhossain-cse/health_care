@@ -6,7 +6,7 @@ import useFirebase from "../../hooks/useFirebase";
 
 const Login = () => {
   const location = useLocation();
-  const { loginUsingEmailPassword, loginUsingGoogle } = useFirebase();
+  const { loginUsingEmailPassword, loginUsingGoogle,setIsLoading } = useFirebase();
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const history = useHistory();
@@ -15,7 +15,9 @@ const Login = () => {
     e.preventDefault();
     loginUsingEmailPassword(Email, Password).then((result) => {
       history.push(url);
-    });
+    }).finally(() => {
+      setIsLoading(false)
+    });;
   };
   const googleLogin = () => {
     loginUsingGoogle()
@@ -24,6 +26,8 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+      }).finally(() => {
+        setIsLoading(false)
       });
   };
   return (

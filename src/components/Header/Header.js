@@ -6,7 +6,6 @@ import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
   const { User, logout } = useAuth();
-  console.log(User);
   return (
     <Navbar bg="white" sticky="top" expand="lg" className="py-3">
       <Container>

@@ -15,6 +15,7 @@ import { useHistory } from "react-router";
 const useFirebase = () => {
   initializeFireBase();
   const auth = getAuth();
+  const [IsLoading, setIsLoading] = useState(true);
   const [User, setUser] = useState({});
   const [Error, setError] = useState({});
   const history = useHistory();
@@ -38,31 +39,38 @@ const useFirebase = () => {
     });
   };
   const loginUsingEmailPassword = (email, password) => {
+    setIsLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // login using google
   const loginUsingGoogle = () => {
+    setIsLoading(true)
     return signInWithPopup(auth, googleProvider)
   
   };
   // logout user
   const logout = () => {
+    setIsLoading(true)
     signOut(auth)
       .then(() => {
         setUser({});
       })
       .catch((error) => {
         // An error happened.
-      });
+      }).finally(() => {
+        setIsLoading(false)
+      })
   };
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      setIsLoading(true)
       if (user) {
         setUser(user);
         console.log("user login");
       }
+      setIsLoading(false)
     });
   }, []);
 
@@ -73,6 +81,8 @@ const useFirebase = () => {
     User,
     Error,
     loginUsingGoogle,
+    setIsLoading,
+    IsLoading,
   };
 };
 
