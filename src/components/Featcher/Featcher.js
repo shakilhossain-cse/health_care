@@ -8,49 +8,36 @@ const Feathar = () => {
         <Row>
           <Col xs={6} md={3}>
             <Card bg="Dark" text="Dark" className="mb-2">
-              <Card.Header>Header</Card.Header>
+             
               <Card.Body>
-                <Card.Title> Card Title </Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
+               <p>100% Secqure</p>
+               
               </Card.Body>
             </Card>
           </Col>
           <Col xs={6} md={3}>
             <Card bg="Dark" text="Dark" className="mb-2">
-              <Card.Header>Header</Card.Header>
+             
               <Card.Body>
-                <Card.Title> Card Title </Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
+               <p>24h Support</p>
+               
               </Card.Body>
             </Card>
           </Col>
           <Col xs={6} md={3}>
             <Card bg="Dark" text="Dark" className="mb-2">
-              <Card.Header>Header</Card.Header>
+             
               <Card.Body>
-                <Card.Title> Card Title </Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
+                <p>Exclent Service</p>
+               
               </Card.Body>
             </Card>
           </Col>
           <Col xs={6} md={3}>
             <Card bg="Dark" text="Dark" className="mb-2">
-              <Card.Header>Header</Card.Header>
+             
               <Card.Body>
-                <Card.Title> Card Title </Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
+                <p>Fast Service</p>
               </Card.Body>
             </Card>
           </Col>

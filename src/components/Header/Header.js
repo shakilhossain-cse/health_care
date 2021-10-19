@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
   const { User, logout } = useAuth();
-  console.log(logout);
+  console.log(User);
   return (
     <Navbar bg="white" sticky="top" expand="lg" className="py-3">
       <Container>
@@ -30,34 +30,32 @@ const Header = () => {
             <Nav.Link as={HashLink} to="/home#specialists">
               Specialists
             </Nav.Link>
-            <Nav.Link as={HashLink} to="/home#specialists">
-              Specialists
-            </Nav.Link>
-            <Nav.Link as={HashLink} to="/home#blogs">
-              Blogs
-            </Nav.Link>
-            {
-              !User.email ? <Nav.Link
-              as={Link}
-              className="btn btn-primary text-white text-decoration-none px-5 mx-3"
-              to="/login"
-            >
-              Login
-            </Nav.Link> : ""
-            }
-              
-
-            { User.email &&
+            
+            {User.email && <Nav.Link>Hello {User.displayName}</Nav.Link>}
+            {!User.email ? (
               <Nav.Link
-              className="btn btn-primary text-white text-decoration-none px-5 mx-3 "
-              onClick={() => logout()}
-            >
-              Logout
-            </Nav.Link>
-            }
+                as={Link}
+                className="btn btn-primary text-white text-decoration-none px-5 mx-3"
+                to="/login"
+              >
+                Login
+              </Nav.Link>
+            ) : (
+              ""
+            )}
+
+            {User.email && (
+              <Nav.Link
+                className="btn btn-primary text-white text-decoration-none px-5 mx-3 "
+                onClick={() => logout()}
+              >
+                Logout
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
+    
     </Navbar>
   );
 };

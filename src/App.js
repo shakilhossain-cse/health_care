@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import Congrates from "./components/Congrates/Congrates";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
@@ -12,6 +13,9 @@ import AuthProvider from "./context/AuthProvider";
 import PrivetRoute from "./route/PrivetRoute";
 
 function App() {
+
+
+
   return (
     <AuthProvider>
       <Router>
@@ -21,9 +25,15 @@ function App() {
           <Route path="/home" component={Main} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/service/:serviceId" component={ServiceDeatiles} />
-          <PrivetRoute path="/pharches">
+          <Route
+            path="/service/:serviceId"
+            component={ServiceDeatiles}
+          />
+          <PrivetRoute path="/pharches/:serviceId">
             <Pharches />
+          </PrivetRoute>
+          <PrivetRoute path="/congrets">
+            <Congrates />
           </PrivetRoute>
           <Route path="/*" component={NotFound} />
         </Switch>

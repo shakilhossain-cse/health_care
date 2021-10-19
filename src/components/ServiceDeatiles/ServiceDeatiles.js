@@ -24,7 +24,7 @@ const ServiceDeatiles = () => {
 
   const history = useHistory()
   const cartHandeler = () => {
-   history.push('/pharches')
+   history.push(`/pharches/${DisplayService.id}`)
   }
   return (
     <div className="bg-light py-4">
@@ -38,7 +38,7 @@ const ServiceDeatiles = () => {
             <Col md={6} xs={12}>
               <p>{DisplayService.desc}</p>
               <h5> Price : ${DisplayService.price}</h5>
-              <Button className="btn btn-primary my-3" onClick={cartHandeler}>Add to Cart</Button>
+              <Button className="btn btn-primary my-3" onClick={cartHandeler}>Purchase</Button>
             </Col>
           </Row>
         </div>

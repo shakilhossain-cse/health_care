@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 
 const PrivetRoute = ({ children, ...rest }) => {
   const { User } = useAuth();
-  console.log(User);
+
   return (
     <Route
     {...rest}

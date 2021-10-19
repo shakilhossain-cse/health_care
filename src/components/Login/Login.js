@@ -38,20 +38,22 @@ const Login = () => {
               <label htmlFor="email">Email</label>
               <input
                 id="email"
-                type="text"
+                type="email"
                 className="form-control my-2"
                 placeholder="Type your Email"
                 onBlur={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="my-4">
               <label htmlFor="password">Password</label>
               <input
                 id="password"
-                type="text"
+                type="password"
                 className="form-control my-2"
                 placeholder="Type your Password"
                 onBlur={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             <div className="d-flex justify-content-between">
