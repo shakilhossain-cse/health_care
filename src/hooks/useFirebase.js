@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import initializeFireBase from "../firebase/firebase.init";
 import {
   getAuth,
@@ -12,6 +12,8 @@ import {
 const useFirebase = () => {
   initializeFireBase();
   const auth = getAuth();
+  const [User, setUser] = useState({});
+  const [Error, setError] = useState({});
 
   // register useing  email and password
   const createAccountByEmail = (name, email, password) => {
@@ -19,11 +21,11 @@ const useFirebase = () => {
       .then((result) => {
         const user = result.user;
         setUserName(name);
-        console.log(user);
+     
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        setError(errorMessage);
       });
   };
   // set user name
@@ -36,7 +38,7 @@ const useFirebase = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        setUser(user);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -45,9 +47,11 @@ const useFirebase = () => {
   };
 
   // logout user
-  const logoutUser = () => {
+  const logout= () => {
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        setUser({});
+      })
       .catch((error) => {
         // An error happened.
       });
@@ -56,15 +60,19 @@ const useFirebase = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        setUser(user);
         console.log("user login");
-      } else {
-        // User is signed out
-        // ...
       }
     });
   }, []);
 
-  return { createAccountByEmail, loginUsingEmailPassword, logoutUser };
+  return {
+    createAccountByEmail,
+    loginUsingEmailPassword,
+    logout,
+    User,
+    Error,
+  };
 };
 
 export default useFirebase;

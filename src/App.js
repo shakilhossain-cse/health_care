@@ -7,10 +7,11 @@ import Main from "./components/Main/Main";
 import NotFound from "./components/NotFound/NotFound";
 import Register from "./components/Register/Register";
 import ServiceDeatiles from "./components/ServiceDeatiles/ServiceDeatiles";
+import AuthProvider from "./context/AuthProvider";
 
 function App() {
   return (
-    <div>
+    <AuthProvider>
       <Router>
         <Header />
         <Switch>
@@ -23,7 +24,7 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-    </div>
+    </AuthProvider>
   );
 }
 
