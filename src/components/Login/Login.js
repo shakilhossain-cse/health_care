@@ -1,22 +1,30 @@
 import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
-import { Link,useLocation,useHistory } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import useFirebase from "../../hooks/useFirebase";
 
 const Login = () => {
   const location = useLocation();
-  const { loginUsingEmailPassword } = useFirebase();
+  const { loginUsingEmailPassword, loginUsingGoogle } = useFirebase();
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const history = useHistory();
-  const url = location.state?.from || '/home'
+  const url = location.state?.from || "/home";
   const loginHandeler = (e) => {
     e.preventDefault();
-    loginUsingEmailPassword(Email, Password)
-    .then((result) => {
-      history.push(url)
-    })
+    loginUsingEmailPassword(Email, Password).then((result) => {
+      history.push(url);
+    });
+  };
+  const googleLogin = () => {
+    loginUsingGoogle()
+      .then((result) => {
+        history.push(url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="p-5 bg-light">
@@ -63,6 +71,12 @@ const Login = () => {
             </div>
             <Button type="submit" className="btn btn-primary mt-4 w-100">
               Login
+            </Button>
+            <br />
+            <p className="text-center my-2">Or</p>
+
+            <Button className="btn btn-danger w-100" onClick={googleLogin}>
+              Log In With Google
             </Button>
           </form>
         </div>

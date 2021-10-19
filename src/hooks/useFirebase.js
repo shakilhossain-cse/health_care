@@ -7,14 +7,18 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
+import { useHistory } from "react-router";
 
 const useFirebase = () => {
   initializeFireBase();
   const auth = getAuth();
   const [User, setUser] = useState({});
   const [Error, setError] = useState({});
-
+  const history = useHistory();
+  const googleProvider = new GoogleAuthProvider();
   // register useing  email and password
   const createAccountByEmail = (name, email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -37,6 +41,11 @@ const useFirebase = () => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // login using google
+  const loginUsingGoogle = () => {
+    return signInWithPopup(auth, googleProvider)
+  
+  };
   // logout user
   const logout = () => {
     signOut(auth)
@@ -63,6 +72,7 @@ const useFirebase = () => {
     logout,
     User,
     Error,
+    loginUsingGoogle,
   };
 };
 
