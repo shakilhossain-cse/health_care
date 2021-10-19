@@ -9,7 +9,7 @@ const Doctor = ({ doctor }) => {
           <Card.Img variant="top" src={doctor.image} />
           <div className="py-3">
             <Card.Title>{doctor.name}</Card.Title>
-            <p className="text-info">{doctor.title}</p>
+            <p className="text-primary">{doctor.title}</p>
             <Card.Text className="text-muted">{doctor.desc}</Card.Text>
           </div>
         </Card>

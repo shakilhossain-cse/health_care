@@ -4,7 +4,7 @@ import { Card, Col } from 'react-bootstrap'
 const WorkTime = () => {
     return (
         <Col>
-            <Card className="bg-info">
+            <Card className="bg-primary">
               <Card.Body className="my-1 text-white">
                 <Card.Title>WORKING TIME</Card.Title>
                 <Card.Text>

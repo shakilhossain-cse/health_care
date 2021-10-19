@@ -1,6 +1,7 @@
 import React from 'react'
 import Banner from '../Banner/Banner'
 import Cares from '../Cares/Cares'
+import Featcher from '../Featcher/Featcher'
 import Services from '../Services/Services'
 import Specialists from '../Specialists/Specialists'
 
@@ -10,7 +11,8 @@ const Main = () => {
             <Banner />
             <Cares />
             <Services />
-            <Specialists/>
+            <Specialists />
+            <Featcher/>
         </div>
     )
 }
