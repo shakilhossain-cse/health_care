@@ -5,9 +5,11 @@ import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import Main from "./components/Main/Main";
 import NotFound from "./components/NotFound/NotFound";
+import Pharches from "./components/Pharches/Pharches";
 import Register from "./components/Register/Register";
 import ServiceDeatiles from "./components/ServiceDeatiles/ServiceDeatiles";
 import AuthProvider from "./context/AuthProvider";
+import PrivetRoute from "./route/PrivetRoute";
 
 function App() {
   return (
@@ -16,11 +18,14 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route  path="/home" component={Main} />
-          <Route  path="/login" component={Login} />
-          <Route  path="/register" component={Register} />
-          <Route  path="/service/:serviceId" component={ServiceDeatiles} />
-          <Route  path="/*" component={NotFound} />
+          <Route path="/home" component={Main} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/service/:serviceId" component={ServiceDeatiles} />
+          <PrivetRoute path="/pharches">
+            <Pharches />
+          </PrivetRoute>
+          <Route path="/*" component={NotFound} />
         </Switch>
         <Footer />
       </Router>

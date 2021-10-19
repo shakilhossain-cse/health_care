@@ -1,16 +1,22 @@
 import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link,useLocation,useHistory } from "react-router-dom";
 import useFirebase from "../../hooks/useFirebase";
 
 const Login = () => {
+  const location = useLocation();
   const { loginUsingEmailPassword } = useFirebase();
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const loginHandeler = e => {
+  const history = useHistory();
+  const url = location.state?.from || '/home'
+  const loginHandeler = (e) => {
     e.preventDefault();
-    loginUsingEmailPassword(Email,Password)
+    loginUsingEmailPassword(Email, Password)
+    .then((result) => {
+      history.push(url)
+    })
   };
   return (
     <div className="p-5 bg-light">
@@ -28,7 +34,6 @@ const Login = () => {
                 className="form-control my-2"
                 placeholder="Type your Email"
                 onBlur={(e) => setEmail(e.target.value)}
-
               />
             </div>
             <div className="my-4">
