@@ -24,7 +24,7 @@ const Specialists = () => {
         <div>
           <Row xs={2} md={4} className="g-4">
             {Doctors.map((doctor) => (
-              <Doctor doctor={doctor} />
+              <Doctor doctor={doctor} key={doctor.id} />
             ))}
           </Row>
         </div>

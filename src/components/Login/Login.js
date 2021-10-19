@@ -9,7 +9,7 @@ const Login = () => {
       <Container>
         <div className="w-50 mx-auto">
           <Form className="border p-5 ">
-            <h2 className="text-center mb-5 border-top border-bottom p-3">
+            <h2 className="text-center mb-5 border-2 border-top border-bottom p-3">
               Login
             </h2>
             <div className="my-2">
@@ -45,7 +45,7 @@ const Login = () => {
                 </Link>
               </p>
             </div>
-            <Button type="submit" className="btn btn-primary w-100">
+            <Button type="submit" className="btn btn-primary mt-4 w-100">
               Login
             </Button>
           </Form>
