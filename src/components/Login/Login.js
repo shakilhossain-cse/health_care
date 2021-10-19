@@ -1,14 +1,22 @@
 import Button from "@restart/ui/esm/Button";
-import React from "react";
-import { Container, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useFirebase from "../../hooks/useFirebase";
 
 const Login = () => {
+  const { loginUsingEmailPassword } = useFirebase();
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const loginHandeler = e => {
+    e.preventDefault();
+    loginUsingEmailPassword(Email,Password)
+  };
   return (
     <div className="p-5 bg-light">
       <Container>
         <div className="w-50 mx-auto">
-          <Form className="border p-5 ">
+          <form className="border p-5 " onSubmit={loginHandeler}>
             <h2 className="text-center mb-5 border-2 border-top border-bottom p-3">
               Login
             </h2>
@@ -19,6 +27,8 @@ const Login = () => {
                 type="text"
                 className="form-control my-2"
                 placeholder="Type your Email"
+                onBlur={(e) => setEmail(e.target.value)}
+
               />
             </div>
             <div className="my-4">
@@ -28,6 +38,7 @@ const Login = () => {
                 type="text"
                 className="form-control my-2"
                 placeholder="Type your Password"
+                onBlur={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="d-flex justify-content-between">
@@ -48,7 +59,7 @@ const Login = () => {
             <Button type="submit" className="btn btn-primary mt-4 w-100">
               Login
             </Button>
-          </Form>
+          </form>
         </div>
       </Container>
     </div>
