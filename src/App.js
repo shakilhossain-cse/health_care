@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import About from "./components/About/About";
 import Congrates from "./components/Congrates/Congrates";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/home" component={Main} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/about" component={About} />
           <Route
             path="/service/:serviceId"
             component={ServiceDeatiles}

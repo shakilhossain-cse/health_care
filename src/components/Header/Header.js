@@ -30,6 +30,9 @@ const Header = () => {
             <Nav.Link as={HashLink} to="/home#specialists">
               Specialists
             </Nav.Link>
+            <Nav.Link as={Link} to="/about">
+              About
+            </Nav.Link>
             
             {User.email && <Nav.Link>Hello {User.displayName}</Nav.Link>}
             {!User.email ? (
